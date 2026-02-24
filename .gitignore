@@ -1,0 +1,33 @@
+# Ignore the WordPress config file
+wp-config.php
+
+# Ignore database dumps
+*.sql
+
+# Ignore all log files
+*.log
+
+# Ignore temporary files created by IDEs
+.idea/
+/.vscode/
+
+# Ignore OS-generated files
+.DS_Store
+Thumbs.db
+
+# Ignore Composer vendor directory (if using Composer)
+vendor/
+
+# Ignore Node.js dependencies (if using npm/yarn)
+node_modules/
+
+# Ignore compiled files from tools like Gulp or Webpack
+/dist/
+/build/
+
+# Ignore uploads (optional, depending on whether you need them in version control)
+wp-content/uploads/
+
+# Ignore debugging and cache files
+wp-content/cache/
+wp-content/debug.log
