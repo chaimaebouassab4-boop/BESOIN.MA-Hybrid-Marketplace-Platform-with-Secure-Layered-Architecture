@@ -1,0 +1,318 @@
+/* =============================================
+   BESOIN HEADER STYLES
+   Couleurs: Orange #FF4D00 | Bleu #0066FF
+   Fichier: /css/header.css
+   ============================================= */
+
+:root {
+    --orange: #FF4D00;
+    --blue:   #0066FF;
+    --blue-dark: #0052CC;
+    --text:   #222222;
+    --muted:  #666666;
+    --border: #E5E7EB;
+    --white:  #FFFFFF;
+    --shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+/* ── HEADER WRAPPER ── */
+.besoin-header {
+    background: var(--white);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border);
+}
+
+.besoin-navbar {
+    padding: 12px 0;
+}
+
+.besoin-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: nowrap;
+}
+
+/* ── LOGO ── */
+.besoin-logo {
+    flex-shrink: 0;
+    padding: 0;
+    margin-right: 0;
+}
+
+.besoin-logo .logo-img {
+    height: 44px;
+    width: auto;
+    display: block;
+}
+
+/* ── SEARCH WRAPPER ── */
+.besoin-search-wrapper {
+    flex: 1;
+    max-width: 680px;
+}
+
+/* ── SEARCH BAR ── */
+.besoin-search-bar {
+    display: flex;
+    align-items: center;
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 50px;
+    padding: 4px 4px 4px 8px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+    gap: 0;
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.besoin-search-bar:focus-within {
+    border-color: var(--orange);
+    box-shadow: 0 2px 12px rgba(255,77,0,0.12);
+}
+
+/* ── DROPDOWNS ── */
+.besoin-drop-btn {
+    background: transparent;
+    border: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    cursor: pointer;
+    white-space: nowrap;
+    border-radius: 50px;
+    transition: background 0.15s;
+}
+
+.besoin-drop-btn:hover {
+    background: #F5F5F5;
+}
+
+.besoin-drop-btn::after {
+    /* Bootstrap caret */
+    margin-left: 2px;
+}
+
+.drop-label {
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ── DIVIDER ── */
+.besoin-divider {
+    width: 1px;
+    height: 24px;
+    background: var(--border);
+    flex-shrink: 0;
+}
+
+/* ── SEARCH INPUT ── */
+.besoin-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    color: var(--text);
+    padding: 8px 16px;
+    min-width: 0;
+}
+
+.besoin-input::placeholder {
+    color: #AAAAAA;
+}
+
+.besoin-input::-webkit-search-cancel-button {
+    display: none;
+}
+
+/* ── DROPDOWN MENU ── */
+.besoin-dropdown-menu {
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+    padding: 8px 0;
+    min-width: 180px;
+    margin-top: 8px !important;
+}
+
+.besoin-dropdown-menu .dropdown-item {
+    font-size: 14px;
+    padding: 10px 16px;
+    color: var(--text);
+    transition: background 0.15s, color 0.15s;
+}
+
+.besoin-dropdown-menu .dropdown-item:hover,
+.besoin-dropdown-menu .dropdown-item.active {
+    background: #FFF3EF;
+    color: var(--orange);
+}
+
+/* ── SEARCH BUTTON ── */
+.besoin-search-btn {
+    background: var(--orange);
+    color: var(--white);
+    border: none;
+    border-radius: 50px;
+    padding: 10px 28px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background 0.2s, transform 0.15s;
+}
+
+.besoin-search-btn:hover {
+    background: #E64400;
+    transform: translateY(-1px);
+}
+
+.besoin-search-btn:active {
+    transform: translateY(0);
+}
+
+/* ── ACTION BUTTONS ── */
+.besoin-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.besoin-action-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 16px;
+    border-radius: 50px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    white-space: nowrap;
+    border: 1.5px solid transparent;
+}
+
+/* Sign In — outline bleu */
+.btn-sign-in {
+    color: var(--blue);
+    border-color: var(--blue);
+    background: transparent;
+}
+
+.btn-sign-in:hover {
+    background: var(--blue);
+    color: var(--white);
+}
+
+/* Add Business — plein bleu */
+.btn-add-business {
+    background: var(--blue);
+    color: var(--white);
+    border-color: var(--blue);
+}
+
+.btn-add-business:hover {
+    background: var(--blue-dark);
+    border-color: var(--blue-dark);
+    color: var(--white);
+    transform: translateY(-1px);
+}
+
+/* Deal List — plein bleu */
+.btn-deal-list {
+    background: var(--blue);
+    color: var(--white);
+    border-color: var(--blue);
+}
+
+.btn-deal-list:hover {
+    background: var(--blue-dark);
+    border-color: var(--blue-dark);
+    color: var(--white);
+    transform: translateY(-1px);
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+
+@media (max-width: 1200px) {
+    .besoin-search-wrapper {
+        max-width: 500px;
+    }
+    .besoin-action-btn span {
+        display: none; /* icônes seulement sur tablette */
+    }
+    .besoin-action-btn {
+        padding: 9px 12px;
+    }
+}
+
+@media (max-width: 992px) {
+    .besoin-container {
+        flex-wrap: wrap;
+    }
+
+    .besoin-search-wrapper {
+        order: 3;
+        max-width: 100%;
+        width: 100%;
+        margin: 8px 0;
+    }
+
+    .besoin-search-bar {
+        flex-wrap: wrap;
+        border-radius: 16px;
+        padding: 8px;
+        gap: 8px;
+    }
+
+    .besoin-divider {
+        display: none;
+    }
+
+    .besoin-drop-btn {
+        border: 1px solid var(--border);
+        border-radius: 8px;
+    }
+
+    .besoin-input {
+        width: 100%;
+        order: -1;
+        padding: 10px 12px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+    }
+
+    .besoin-search-btn {
+        width: 100%;
+        border-radius: 8px;
+        padding: 12px;
+    }
+
+    .besoin-actions {
+        order: 4;
+        width: 100%;
+        justify-content: center;
+        padding-bottom: 12px;
+    }
+
+    .besoin-action-btn span {
+        display: inline; /* texte visible en mobile */
+    }
+}

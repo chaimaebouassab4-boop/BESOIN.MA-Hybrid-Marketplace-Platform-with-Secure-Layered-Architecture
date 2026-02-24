@@ -1,301 +1,163 @@
 <?php
-
 /**
- * The template for displaying the footer
- *
- * Contains the closing of the #content div and all content after.
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package Becoin
+ * Footer template
+ * 
+ * @package BESOIN
  */
-
 ?>
 
-<section class="footer-section">
-	<div class="container">
-		<a href="#" class="footer-logo">
-			<img src="<?php echo get_template_directory_uri(); ?>/images/logo.webp" alt="logo" class="img-fluid">
-		</a>
+    </div><!-- #page -->
 
-		<div class="row footer-spacing">
-			<div class="col-md-12 col-lg-4 mb-3">
-				<h5 class="footer-head">Building great business stories.</h5>
-				<a href="#" class="footer-para text-decoration-none">Effortlessly search, discover and match with
-					top
-					providers in 500+ services. Tell us your needs,
-					and we'll introduce you to the right partner to
-					help your business grow.</a>
+    <footer class="main-footer">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Brand Column -->
+                <div class="col-lg-4 col-md-6">
+                    <a href="<?php echo esc_url(home_url('/')); ?>" class="footer-brand text-decoration-none">
+                        BESOIN<span>.MA</span>
+                    </a>
+                    <p class="footer-desc">
+                        La premiÃ¨re marketplace marocaine dÃ©diÃ©e aux services, emplois et opportunitÃ©s business. 
+                        Connectez-vous avec les meilleurs professionnels du royaume.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/besoin.ma" target="_blank" aria-label="Facebook">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="https://instagram.com/besoin.ma" target="_blank" aria-label="Instagram">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="https://linkedin.com/company/besoin" target="_blank" aria-label="LinkedIn">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                        <a href="https://twitter.com/besoin_ma" target="_blank" aria-label="Twitter">
+                            <i class="bi bi-twitter-x"></i>
+                        </a>
+                    </div>
+                </div>
 
-			</div>
-			<div class="col-md-3 col-lg-2 mb-3">
-				<h5 class="footer-head">For clients</h5>
-				<a href="#" class="footer-para text-decoration-none">Post a project</a>
-				<a href="#" class="footer-para text-decoration-none">Explore</a>
-				<a href="#" class="footer-para text-decoration-none">Get advice</a>
-				<a href="#" class="footer-para text-decoration-none">Search</a>
-			</div>
-			<div class="col-md-3 col-lg-2 mb-3">
-				<h5 class="footer-head">For providers</h5>
-				<a href="#" class="footer-para text-decoration-none">How it works</a>
-				<a href="#" class="footer-para text-decoration-none">Pricing</a>
-				<a href="#" class="footer-para text-decoration-none">Get listed</a>
-			</div>
-			<div class="col-md-3 col-lg-2 mb-3">
-				<h5 class="footer-head">Resources</h5>
-				<a href="#" class="footer-para text-decoration-none">Blog</a>
-				<a href="#" class="footer-para text-decoration-none">Data Hub</a>
-				<a href="#" class="footer-para text-decoration-none">Help & Support</a>
-			</div>
-			<div class="col-md-3 col-lg-2">
-				<h5 class="footer-head">Company</h5>
-				<a href="#" class="footer-para text-decoration-none">About</a>
-				<a href="#" class="footer-para text-decoration-none">Contact</a>
-				<a href="#" class="footer-para text-decoration-none">Jobs</a>
-			</div>
-		</div>
+                <!-- Links Columns -->
+                <div class="col-lg-2 col-md-6">
+                    <h4 class="footer-title">Explorer</h4>
+                    <ul class="footer-links">
+                        <li><a href="<?php echo esc_url(home_url('/recherche?type=service')); ?>">Services</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/recherche?type=job')); ?>">Emplois</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/recherche?type=business')); ?>">Business</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/categories')); ?>">CatÃ©gories</a></li>
+                    </ul>
+                </div>
 
-		<div class="row mb-2">
-			<div class="col-12">
-				<div class="social-media-icon">
-					<a href="#" class="footer-icon text-decoration-none">
-						<img src="<?php echo get_template_directory_uri(); ?>/images/icon1.svg" alt="Twitter" class="img-fluid">
-					</a>
-					<a href="#" class="footer-icon text-decoration-none">
-						<img src="<?php echo get_template_directory_uri(); ?>/images/icon2.svg" alt="Facebook" class="img-fluid">
-					</a>
-					<a href="#" class="footer-icon text-decoration-none">
-						<img src="<?php echo get_template_directory_uri(); ?>/images/icon3.svg" alt="Linkedin" class="img-fluid">
-					</a>
-					<a href="#" class="footer-icon text-decoration-none">
-						<img src="<?php echo get_template_directory_uri(); ?>/images/icon4.svg" alt="Instagram" class="img-fluid">
-					</a>
-					<a href="#" class="footer-icon text-decoration-none">
-						<img src="<?php echo get_template_directory_uri(); ?>/images/icon5.svg" alt="YouTube" class="img-fluid">
-					</a>
-				</div>
-			</div>
+                <div class="col-lg-2 col-md-6">
+                    <h4 class="footer-title">Entreprise</h4>
+                    <ul class="footer-links">
+                        <li><a href="<?php echo esc_url(home_url('/a-propos')); ?>">Ã€ propos</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/carrieres')); ?>">CarriÃ¨res</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/presse')); ?>">Presse</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/blog')); ?>">Blog</a></li>
+                    </ul>
+                </div>
 
-		</div>
-		<div class="row mb-2">
-			<div class="col-md-6">
-				<p class="copyrights-text">2023 © Sortlist - All rights reserved-Terms of Use - Privacy Policy</p>
-			</div>
-			<div class="col-md-6">
-				<ul class="text-md-end ps-0 ms-0">
-					<li class="nav-item dropdown list-unstyled ms-2">
-						<a class="nav-link dropdown-toggle align-items-center d-inline-block language-dropdown"
-							href="#" id="LanguageDropdown" role="button" data-bs-toggle="dropdown"
-							aria-expanded="false">
-							<img src="<?php echo get_template_directory_uri(); ?>/images/language.svg" alt="language">
-							Language
-						</a>
-						<ul class="dropdown-menu" aria-labelledby="LanguageDropdown">
-							<li><a class="dropdown-item" href="#">English</a></li>
-							<!-- <li><a class="dropdown-item" href="#">Language</a></li> -->
-							<!-- <li><a class="dropdown-item" href="#">Language</a></li> -->
-						</ul>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</section>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+                <div class="col-lg-2 col-md-6">
+                    <h4 class="footer-title">Aide</h4>
+                    <ul class="footer-links">
+                        <li><a href="<?php echo esc_url(home_url('/aide')); ?>">Centre d'aide</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/contact')); ?>">Contact</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/confidentialite')); ?>">ConfidentialitÃ©</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/cgv')); ?>">CGV</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-2 col-md-6">
+                    <h4 class="footer-title">Professionnels</h4>
+                    <ul class="footer-links">
+                        <li><a href="<?php echo esc_url(home_url('/add-business')); ?>">Publier une annonce</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/tarifs')); ?>">Tarifs</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/pro')); ?>">Espace Pro</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/api')); ?>">API DÃ©veloppeurs</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <?php echo date('Y'); ?> BESOIN.MA - Tous droits rÃ©servÃ©s. 
+                   <span class="d-block d-md-inline">ConÃ§u avec <i class="bi bi-heart-fill text-danger"></i> au Maroc</span>
+                </p>
+            </div>
+        </div>
+    </footer>
 
 
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-<!-- Owl Carousel JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
 
-<script>
-	$(document).ready(function() {
-		var owl = $("#carouselVerification");
+        document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
 
-		owl.owlCarousel({
-			loop: true,
-			autoplay: true,
-			center: false,
-			margin: 10,
-			nav: false,
-			dots: false,
-			stagePadding: 120,
-			responsive: {
-				0: {
-					items: 1,
-					stagePadding: 0
-				},
-				600: {
-					items: 1,
-					stagePadding: 30
-				},
-				768: {
-					items: 2,
-					stagePadding: 60
-				},
-				1360: {
-					items: 4,
-					stagePadding: 100
-				}
-			}
-		});
+        // Search bar interactions
+        const searchBar = document.querySelector('.besoin-search-bar');
+        if (searchBar) {
+            const keywordItems = searchBar.querySelectorAll('.keywords-item');
+            const locationItems = searchBar.querySelectorAll('.location-item');
+            
+            keywordItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const value = item.dataset.value;
+                    const label = item.textContent;
+                    searchBar.querySelector('.keyword-label').textContent = label;
+                    
+                    // Update placeholder based on selection
+                    const input = searchBar.querySelector('#search-input');
+                    const placeholders = {
+                        'service': 'Ex: Plombier, Designer, DÃ©veloppeur...',
+                        'job': 'Ex: Marketing, Comptable, Chauffeur...',
+                        'business': 'Ex: Restaurant, Agence, Boutique...'
+                    };
+                    input.placeholder = placeholders[value] || 'Que recherchez-vous ?';
+                });
+            });
 
-		// Custom navigation buttons
-		$(".left-arrow").click(function() {
-			owl.trigger("prev.owl.carousel");
-		});
+            locationItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const label = item.textContent.trim();
+                    searchBar.querySelector('.location-label').textContent = label;
+                });
+            });
+        }
 
-		$(".right-arrow").click(function() {
-			owl.trigger("next.owl.carousel");
-		});
-	});
-</script>
+        // Favorite toggle
+        document.querySelectorAll('.listing-favorite').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const icon = this.querySelector('i');
+                if (icon.classList.contains('bi-heart')) {
+                    icon.classList.replace('bi-heart', 'bi-heart-fill');
+                    this.style.background = 'var(--besoin-orange)';
+                    this.style.color = 'white';
+                } else {
+                    icon.classList.replace('bi-heart-fill', 'bi-heart');
+                    this.style.background = 'white';
+                    this.style.color = 'inherit';
+                }
+            });
+        });
+    });
+    </script>
 
-<script>
-	$(document).ready(function() {
-		var owl = $("#carouselMoment");
-
-		owl.owlCarousel({
-			loop: true,
-			center: true,
-			margin: 15,
-			responsiveClass: true,
-			nav: true,
-			dots: false,
-			responsive: {
-				0: {
-					items: 1,
-					nav: false
-				},
-				768: {
-					items: 1.5,
-					nav: false,
-					loop: true
-				},
-				991: {
-					items: 1.5,
-					nav: false,
-					loop: true
-				},
-				1024: {
-					items: 2,
-					nav: false,
-					loop: true
-				},
-				1200: {
-					items: 2,
-					nav: false,
-					loop: true
-				},
-				1360: {
-					items: 3,
-					nav: true
-				}
-			}
-		});
-
-		// Custom navigation buttons
-		$(".offer-prev").click(function() {
-			owl.trigger("prev.owl.carousel");
-		});
-
-		$(".offer-next").click(function() {
-			owl.trigger("next.owl.carousel");
-		});
-	});
-</script>
-
-
-<script>
-	$(function() {
-		// Owl Carousel
-		var owl = $("#carouselServices");
-		owl.owlCarousel({
-			items: 4,
-			margin: 10,
-			loop: true,
-			nav: true,
-			responsive: {
-				0: {
-					items: 1,
-					nav: false
-				},
-				768: {
-					items: 2,
-					nav: false,
-					loop: true
-				},
-				1000: {
-					items: 3,
-					nav: true
-				},
-				1360: {
-					items: 4,
-					nav: true
-				}
-
-
-			}
-		});
-
-		// Custom navigation buttons
-		$(".ps-prev").click(function() {
-			owl.trigger("prev.owl.carousel");
-		});
-
-		$(".ps-next").click(function() {
-			owl.trigger("next.owl.carousel");
-		});
-	});
-</script>
-
-<script>
-	$(function() {
-		// Owl Carousel
-		var owl = $("#carouselCategories");
-		owl.owlCarousel({
-			items: 4,
-			margin: 15,
-			loop: true,
-			nav: true,
-			responsive: {
-				0: {
-					items: 1,
-					nav: false
-				},
-				768: {
-					items: 2,
-					nav: false,
-					loop: true
-				},
-				1200: {
-					items: 3,
-					nav: false,
-					loop: true
-				},
-				1360: {
-					items: 4,
-					nav: true
-				}
-			}
-		});
-
-		// Custom navigation buttons
-		$(".cat-prev").click(function() {
-			owl.trigger("prev.owl.carousel");
-		});
-
-		$(".cat-next").click(function() {
-			owl.trigger("next.owl.carousel");
-		});
-	});
-</script>
-</div><!-- #page -->
-
-<?php wp_footer(); ?>
-
+    <?php wp_footer(); ?>
 </body>
-
 </html>

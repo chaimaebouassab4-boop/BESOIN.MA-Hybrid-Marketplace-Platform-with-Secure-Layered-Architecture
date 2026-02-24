@@ -1,56 +1,227 @@
 <?php
 /**
- * ============================================================
- * BESOIN HELPER FUNCTIONS
- * Ajoute ces fonctions à la fin de ton functions.php existant
- * ============================================================
+ * BESOIN Theme Functions
+ *
+ * @package BESOIN
  */
 
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 /**
- * Get locations for the header dropdown.
- *
- * Currently returns static data for Zone A (no Laravel needed).
- * TODO: Replace with real API call when Laravel backend is connected.
- * Example future call: return besoin_api_fetch('/api/locations');
- *
- * @return array
+ * Return a cache-busting version for local assets.
  */
+function besoin_asset_version($relative_path) {
+    $absolute_path = get_template_directory() . $relative_path;
+
+    if (file_exists($absolute_path)) {
+        return (string) filemtime($absolute_path);
+    }
+
+    return wp_get_theme()->get('Version');
+}
+
+// Theme Setup
+add_action('after_setup_theme', 'besoin_setup');
+function besoin_setup() {
+    add_theme_support('title-tag');
+    add_theme_support('post-thumbnails');
+    add_theme_support(
+        'html5',
+        array(
+            'search-form',
+            'comment-form',
+            'comment-list',
+            'gallery',
+            'caption',
+            'script',
+            'style',
+        )
+    );
+    add_theme_support('customize-selective-refresh-widgets');
+
+    register_nav_menus(
+        array(
+            'primary' => __('Menu Principal', 'besoin'),
+            'footer'  => __('Menu Footer', 'besoin'),
+            'mobile'  => __('Menu Mobile', 'besoin'),
+        )
+    );
+
+    add_image_size('listing-card', 400, 300, true);
+    add_image_size('hero-large', 1200, 800, true);
+}
+
+// Enqueue scripts and styles
+add_action('wp_enqueue_scripts', 'besoin_scripts');
+function besoin_scripts() {
+    $theme_version = wp_get_theme()->get('Version');
+
+    // Keep root style.css loaded for WordPress theme stylesheet compatibility.
+    wp_enqueue_style('besoin-theme-style', get_stylesheet_uri(), array(), $theme_version);
+
+    // Bootstrap 5.3.3 CSS + Bootstrap Icons
+    wp_enqueue_style(
+        'besoin-bootstrap-css',
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css',
+        array(),
+        '5.3.3'
+    );
+
+    wp_enqueue_style(
+        'besoin-bootstrap-icons',
+        'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css',
+        array(),
+        '1.11.3'
+    );
+
+    // Main theme stylesheet (required): /css/style.css
+    $main_css = '/css/style.css';
+    wp_enqueue_style(
+        'besoin-main-style',
+        get_template_directory_uri() . $main_css,
+        array('besoin-bootstrap-css', 'besoin-bootstrap-icons', 'besoin-theme-style'),
+        besoin_asset_version($main_css)
+    );
+
+    // Additional theme styles
+    $styles = array(
+        '/css/header.css' => 'besoin-header-style',
+        '/css/dev.css'    => 'besoin-dev-style',
+    );
+
+    foreach ($styles as $path => $handle) {
+        if (file_exists(get_template_directory() . $path)) {
+            wp_enqueue_style(
+                $handle,
+                get_template_directory_uri() . $path,
+                array('besoin-main-style'),
+                besoin_asset_version($path)
+            );
+        }
+    }
+
+    // Bootstrap JS bundle
+    wp_enqueue_script(
+        'besoin-bootstrap-js',
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js',
+        array(),
+        '5.3.3',
+        true
+    );
+
+    // Theme scripts
+    $scripts = array(
+        '/js/main.js'   => 'besoin-main',
+        '/js/custom.js' => 'besoin-custom',
+        '/js/header.js' => 'besoin-header-js',
+    );
+
+    foreach ($scripts as $path => $handle) {
+        if (file_exists(get_template_directory() . $path)) {
+            wp_enqueue_script(
+                $handle,
+                get_template_directory_uri() . $path,
+                array('besoin-bootstrap-js'),
+                besoin_asset_version($path),
+                true
+            );
+        }
+    }
+
+    // Pass AJAX URL + nonce to main.js
+    if (wp_script_is('besoin-main', 'enqueued')) {
+        wp_localize_script(
+            'besoin-main',
+            'besoin_ajax',
+            array(
+                'ajax_url' => admin_url('admin-ajax.php'),
+                'nonce'    => wp_create_nonce('besoin_nonce'),
+            )
+        );
+    }
+}
+
+// Admin styles
+add_action('admin_enqueue_scripts', 'besoin_admin_styles');
+function besoin_admin_styles() {
+    $admin_css = '/css/admin.css';
+
+    if (file_exists(get_template_directory() . $admin_css)) {
+        wp_enqueue_style(
+            'besoin-admin',
+            get_template_directory_uri() . $admin_css,
+            array(),
+            besoin_asset_version($admin_css)
+        );
+    }
+}
+
+// Get locations (mock function - replace with API call)
 function besoin_get_locations() {
-    // Phase 1 : données statiques (pas besoin de Laravel)
     return array(
         array('id' => 1, 'name' => 'Casablanca'),
         array('id' => 2, 'name' => 'Rabat'),
         array('id' => 3, 'name' => 'Marrakech'),
-        array('id' => 4, 'name' => 'Fès'),
-        array('id' => 5, 'name' => 'Tanger'),
+        array('id' => 4, 'name' => 'Tanger'),
+        array('id' => 5, 'name' => 'Fes'),
         array('id' => 6, 'name' => 'Agadir'),
+        array('id' => 7, 'name' => 'Tetouan'),
+        array('id' => 8, 'name' => 'Oujda'),
+    );
+}
+
+// Custom search rewrite
+add_action('init', 'besoin_rewrite_rules');
+function besoin_rewrite_rules() {
+    add_rewrite_rule('^recherche/?$', 'index.php?pagename=recherche', 'top');
+    add_rewrite_rule('^categorie/([^/]+)/?$', 'index.php?category_name=$matches[1]', 'top');
+}
+
+// AJAX handler for search suggestions
+add_action('wp_ajax_besoin_search_suggestions', 'besoin_search_suggestions');
+add_action('wp_ajax_nopriv_besoin_search_suggestions', 'besoin_search_suggestions');
+
+function besoin_search_suggestions() {
+    check_ajax_referer('besoin_nonce', 'nonce');
+
+    $term = isset($_GET['term']) ? sanitize_text_field(wp_unslash($_GET['term'])) : '';
+
+    // Mock suggestions - replace with actual DB/API query
+    $suggestions = array(
+        array('title' => 'Developpeur Web', 'type' => 'service', 'url' => '/service/developpeur-web'),
+        array('title' => 'Designer Graphique', 'type' => 'service', 'url' => '/service/designer-graphique'),
+        array('title' => 'Plombier Casablanca', 'type' => 'service', 'url' => '/service/plombier-casablanca'),
     );
 
-    /*
-    // Phase 2 : décommenter quand Laravel API est prête
-    if ( function_exists('besoin_api_fetch_data') ) {
-        return getLocations();
+    if ($term !== '') {
+        wp_send_json_success($suggestions);
     }
-    return array();
-    */
+
+    wp_send_json_success(array());
 }
 
-/**
- * SVG icon: Keywords
- * Séparé pour garder header.php propre.
- */
-function besoin_icon_keywords() {
-    return '<svg width="14" height="14" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M1.50001 5.98828H1.48829V8.49844H8.51171V5.98828H1.50001ZM8.48827 1.79775V4.47497H7.51173V2.20266L7.50828 2.19921L6.30078 0.991711L6.29736 0.988289H3.98827V4.47497H3.01173V0.0117188H6.70224L8.48827 1.79775ZM0.511719 9.47501V5.01171H9.48828V9.47501H0.511719ZM6.98827 3.51171V4.48828H4.51173V3.51171H6.98827ZM5.98829 2.02502V3.00159H4.51173V2.02502H5.98829ZM1.51173 0.498422H2.48827V4.47497H1.51173V0.498422ZM3.51172 6.51171H6.48828V7.48828H3.51172V6.51171Z" fill="black" stroke="black" stroke-width="0.03125"/>
-    </svg>';
+// Disable WordPress admin bar for non-admins
+add_action('after_setup_theme', 'besoin_remove_admin_bar');
+function besoin_remove_admin_bar() {
+    if (!current_user_can('administrator') && !is_admin()) {
+        show_admin_bar(false);
+    }
 }
 
-/**
- * SVG icon: Location
- */
-function besoin_icon_location() {
-    return '<svg width="14" height="16" viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M9.55978 18.82C9.39658 18.9372 9.20071 19.0003 8.99978 19.0003C8.79885 19.0003 8.60298 18.9372 8.43978 18.82C3.61078 15.378 -1.51422 8.298 3.66678 3.182C5.08912 1.78285 7.00462 0.999124 8.99978 1C10.9998 1 12.9188 1.785 14.3328 3.181C19.5138 8.297 14.3888 15.376 9.55978 18.82Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M9 10C9.53043 10 10.0391 9.78929 10.4142 9.41421C10.7893 9.03914 11 8.53043 11 8C11 7.46957 10.7893 6.96086 10.4142 6.58579C10.0391 6.21071 9.53043 6 9 6C8.46957 6 7.96086 6.21071 7.58579 6.58579C7.21071 6.96086 7 7.46957 7 8C7 8.53043 7.21071 9.03914 7.58579 9.41421C7.96086 9.78929 8.46957 10 9 10Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>';
+// Custom excerpt length
+add_filter('excerpt_length', 'besoin_excerpt_length');
+function besoin_excerpt_length($length) {
+    return 20;
+}
+
+// Add custom body classes
+add_filter('body_class', 'besoin_body_classes');
+function besoin_body_classes($classes) {
+    if (is_front_page()) {
+        $classes[] = 'homepage';
+    }
+
+    return $classes;
 }
