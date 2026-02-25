@@ -8,3 +8,25 @@
 .besoin-header .besoin-search-btn i {
     margin-right: 4px;
 }
+
+
+
+/* Hauteur fixe du header */
+.besoin-navbar {
+    height: 72px;        /* hauteur fixe — ne changera jamais */
+    padding: 0;
+}
+
+.besoin-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* Logo contenu dans la hauteur du navbar */
+.besoin-logo .logo-img {
+    height: 150px;        /* ajuste cette valeur seulement */
+    width: auto;
+    max-height: 100%;
+    display: block;
+}

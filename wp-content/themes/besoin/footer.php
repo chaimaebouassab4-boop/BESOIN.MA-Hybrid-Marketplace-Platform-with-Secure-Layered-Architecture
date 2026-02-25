@@ -17,20 +17,20 @@
                         BESOIN<span>.MA</span>
                     </a>
                     <p class="footer-desc">
-                        La premiÃ¨re marketplace marocaine dÃ©diÃ©e aux services, emplois et opportunitÃ©s business. 
-                        Connectez-vous avec les meilleurs professionnels du royaume.
+                        La première marketplace marocaine dédiée aux services, à l’emploi et aux opportunités d’affaires.
+                        Connectez-vous aux meilleurs professionnels du Royaume.
                     </p>
                     <div class="social-links">
-                        <a href="https://facebook.com/besoin.ma" target="_blank" aria-label="Facebook">
+                        <a href="https://facebook.com/besoin.ma" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
                             <i class="bi bi-facebook"></i>
                         </a>
-                        <a href="https://instagram.com/besoin.ma" target="_blank" aria-label="Instagram">
+                        <a href="https://instagram.com/besoin.ma" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                             <i class="bi bi-instagram"></i>
                         </a>
-                        <a href="https://linkedin.com/company/besoin" target="_blank" aria-label="LinkedIn">
+                        <a href="https://linkedin.com/company/besoin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                             <i class="bi bi-linkedin"></i>
                         </a>
-                        <a href="https://twitter.com/besoin_ma" target="_blank" aria-label="Twitter">
+                        <a href="https://twitter.com/besoin_ma" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
                             <i class="bi bi-twitter-x"></i>
                         </a>
                     </div>
@@ -43,15 +43,15 @@
                         <li><a href="<?php echo esc_url(home_url('/recherche?type=service')); ?>">Services</a></li>
                         <li><a href="<?php echo esc_url(home_url('/recherche?type=job')); ?>">Emplois</a></li>
                         <li><a href="<?php echo esc_url(home_url('/recherche?type=business')); ?>">Business</a></li>
-                        <li><a href="<?php echo esc_url(home_url('/categories')); ?>">CatÃ©gories</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/categories')); ?>">Catégories</a></li>
                     </ul>
                 </div>
 
                 <div class="col-lg-2 col-md-6">
                     <h4 class="footer-title">Entreprise</h4>
                     <ul class="footer-links">
-                        <li><a href="<?php echo esc_url(home_url('/a-propos')); ?>">Ã€ propos</a></li>
-                        <li><a href="<?php echo esc_url(home_url('/carrieres')); ?>">CarriÃ¨res</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/a-propos')); ?>">À propos</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/carrieres')); ?>">Carrières</a></li>
                         <li><a href="<?php echo esc_url(home_url('/presse')); ?>">Presse</a></li>
                         <li><a href="<?php echo esc_url(home_url('/blog')); ?>">Blog</a></li>
                     </ul>
@@ -62,7 +62,7 @@
                     <ul class="footer-links">
                         <li><a href="<?php echo esc_url(home_url('/aide')); ?>">Centre d'aide</a></li>
                         <li><a href="<?php echo esc_url(home_url('/contact')); ?>">Contact</a></li>
-                        <li><a href="<?php echo esc_url(home_url('/confidentialite')); ?>">ConfidentialitÃ©</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/confidentialite')); ?>">Confidentialité</a></li>
                         <li><a href="<?php echo esc_url(home_url('/cgv')); ?>">CGV</a></li>
                     </ul>
                 </div>
@@ -73,14 +73,18 @@
                         <li><a href="<?php echo esc_url(home_url('/add-business')); ?>">Publier une annonce</a></li>
                         <li><a href="<?php echo esc_url(home_url('/tarifs')); ?>">Tarifs</a></li>
                         <li><a href="<?php echo esc_url(home_url('/pro')); ?>">Espace Pro</a></li>
-                        <li><a href="<?php echo esc_url(home_url('/api')); ?>">API DÃ©veloppeurs</a></li>
+                        <li><a href="<?php echo esc_url(home_url('/api')); ?>">API Développeurs</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; <?php echo date('Y'); ?> BESOIN.MA - Tous droits rÃ©servÃ©s. 
-                   <span class="d-block d-md-inline">ConÃ§u avec <i class="bi bi-heart-fill text-danger"></i> au Maroc</span>
+                <p>
+                    &copy; <?php echo date('Y'); ?> BESOIN.MA. Tous droits réservés.
+                    <span class="d-block d-md-inline">
+                        Conçu et développé au Maroc
+                        <i class="bi bi-heart-fill text-danger" aria-hidden="true"></i>
+                    </span>
                 </p>
             </div>
         </div>
@@ -122,9 +126,9 @@
                     // Update placeholder based on selection
                     const input = searchBar.querySelector('#search-input');
                     const placeholders = {
-                        'service': 'Ex: Plombier, Designer, DÃ©veloppeur...',
-                        'job': 'Ex: Marketing, Comptable, Chauffeur...',
-                        'business': 'Ex: Restaurant, Agence, Boutique...'
+                        'service': 'Ex : Plombier, designer, développeur…',
+                        'job': 'Ex : Marketing, comptable, chauffeur…',
+                        'business': 'Ex : Restaurant, agence, boutique…'
                     };
                     input.placeholder = placeholders[value] || 'Que recherchez-vous ?';
                 });
