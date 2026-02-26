@@ -102,6 +102,17 @@ function besoin_scripts() {
         }
     }
 
+    // Hero stylesheet
+    $hero_css = '/css/hero.css';
+    if (file_exists(get_template_directory() . $hero_css)) {
+        wp_enqueue_style(
+            'besoin-hero',
+            get_template_directory_uri() . $hero_css,
+            array('besoin-main-style'),
+            besoin_asset_version($hero_css)
+        );
+    }
+
     // Bootstrap JS bundle
     wp_enqueue_script(
         'besoin-bootstrap-js',
@@ -225,3 +236,43 @@ function besoin_body_classes($classes) {
 
     return $classes;
 }
+// Connexion à la base métier besoin_data
+function besoin_data_db() {
+    static $db = null;
+
+    if ($db === null) {
+        $db = new wpdb(DB_USER, DB_PASSWORD, 'besoin_data', DB_HOST);
+        $db->set_charset($db->dbh, 'utf8mb4');
+    }
+
+    return $db;
+}
+function besoin_get_featured_business($limit = 6) {
+    $db = besoin_data_db();
+
+    $sql = $db->prepare("
+        SELECT id, name, address, phone, website, facebook, instagram
+        FROM business
+        ORDER BY id DESC
+        LIMIT %d
+    ", $limit);
+
+    return $db->get_results($sql);
+}
+add_action('wp_enqueue_scripts', function() {
+
+    wp_enqueue_style(
+        'besoin-hero-style',
+        get_stylesheet_directory_uri() . '/assets/css/hero.css',
+        [],
+        '1.0.0'
+    );
+
+    wp_enqueue_script(
+        'besoin-hero-script',
+        get_stylesheet_directory_uri() . '/assets/js/hero.js',
+        [],
+        '1.0.0',
+        true // important → charge en bas du body
+    );
+});

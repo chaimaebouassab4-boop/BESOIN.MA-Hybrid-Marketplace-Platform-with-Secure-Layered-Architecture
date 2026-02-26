@@ -21,7 +21,7 @@ $logo_uri  = get_template_directory_uri() . '/images/besoinLogo-removebg-preview
 <div id="page" class="site">
 
 <header class="besoin-header">
-    <nav class="besoin-navbar" aria-label="<?php esc_attr_e('Primary navigation', 'besoin'); ?>">
+    <nav class="besoin-navbar" aria-label="<?php esc_attr_e('Navigation principale', 'besoin'); ?>">
         <div class="besoin-container">
 
             <!-- LOGO -->
@@ -37,24 +37,24 @@ $logo_uri  = get_template_directory_uri() . '/images/besoinLogo-removebg-preview
             <div class="besoin-search-wrapper">
                 <form method="get" action="<?php echo esc_url(home_url('/recherche')); ?>" class="besoin-search-bar" id="besoin-search-form">
 
-                    <!-- Mots-clés dropdown -->
+                    <!-- Type dropdown -->
                     <div class="dropdown">
                         <button class="besoin-drop-btn dropdown-toggle" type="button"
                                 id="keywordsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-grid"></i>
-                            <span class="drop-label" id="keywords-label">Mots-clés</span>
+                            <span class="drop-label" id="keywords-label">Catégorie</span>
                         </button>
                         <ul class="dropdown-menu besoin-dropdown-menu" aria-labelledby="keywordsDropdown">
                             <li><a class="dropdown-item keywords-item" href="#" data-value="service">Services</a></li>
-                            <li><a class="dropdown-item keywords-item" href="#" data-value="job">Emplois</a></li>
+                            <li><a class="dropdown-item keywords-item" href="#" data-value="emploi">Emplois</a></li>
                             <li><a class="dropdown-item keywords-item" href="#" data-value="business">Business</a></li>
-                            <li><a class="dropdown-item keywords-item" href="#" data-value="product">Produits &amp; Services</a></li>
+                            <li><a class="dropdown-item keywords-item" href="#" data-value="produit">Produits</a></li>
                         </ul>
                     </div>
 
                     <div class="besoin-divider"></div>
 
-                    <!-- Champ de recherche -->
+                    <!-- Champ recherche -->
                     <input type="search" name="q" id="search-input"
                            class="besoin-input"
                            placeholder="Que recherchez-vous ?"
@@ -85,7 +85,7 @@ $logo_uri  = get_template_directory_uri() . '/images/besoinLogo-removebg-preview
                         </ul>
                     </div>
 
-                    <!-- Bouton Rechercher -->
+                    <!-- Bouton -->
                     <button type="submit" class="besoin-search-btn" id="srch_button">
                         <i class="bi bi-search"></i> Rechercher
                     </button>
@@ -95,14 +95,14 @@ $logo_uri  = get_template_directory_uri() . '/images/besoinLogo-removebg-preview
 
             <!-- ACTION BUTTONS -->
             <div class="besoin-actions">
-                <a href="<?php echo esc_url(home_url('/sign-in')); ?>" class="besoin-action-btn btn-sign-in">
-                    <i class="bi bi-box-arrow-in-right"></i><span>Sign In</span>
+                <a href="<?php echo esc_url(home_url('/connexion')); ?>" class="besoin-action-btn btn-sign-in">
+                    <i class="bi bi-box-arrow-in-right"></i><span>Connexion</span>
                 </a>
-                <a href="<?php echo esc_url(home_url('/add-business')); ?>" class="besoin-action-btn btn-add-business">
-                    <i class="bi bi-plus-circle"></i><span>Add Business</span>
-                </a>
-                <a href="<?php echo esc_url(home_url('/deal-list')); ?>" class="besoin-action-btn btn-deal-list">
-                    <i class="bi bi-tag"></i><span>Deal List</span>
+
+                                
+
+                <a href="<?php echo esc_url(home_url('/inscription')); ?>" class="besoin-action-btn btn-add-business">
+                    <i class="bi bi-plus-circle"></i><span>Créer un compte</span>
                 </a>
             </div>
 
