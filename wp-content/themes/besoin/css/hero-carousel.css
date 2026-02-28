@@ -140,8 +140,8 @@
 
 /* ── HERO BUTTONS ── */
 .besoin-btn-orange {
-    background-color: #FF4D00;
-    border-color: #FF4D00;
+    background-color: #C04B11;
+    border-color: #C04B11;
     color: #fff;
     border-radius: 50px;
     padding: 12px 28px;
@@ -149,23 +149,22 @@
     transition: all 0.2s;
 }
 .besoin-btn-orange:hover {
-    background-color: #e64400;
-    border-color: #e64400;
+    background-color: #C04B11;
+    border-color: #C04B11;
     color: #fff;
     transform: translateY(-2px);
 }
 
 .besoin-btn-outline {
     background: transparent;
-    border: 2px solid #FF4D00;
-    color: #FF4D00;
+    color: #C04B11;
     border-radius: 50px;
     padding: 12px 28px;
     font-weight: 600;
     transition: all 0.2s;
 }
 .besoin-btn-outline:hover {
-    background: #FF4D00;
+    background: #C04B11;
     color: #fff;
     transform: translateY(-2px);
 }

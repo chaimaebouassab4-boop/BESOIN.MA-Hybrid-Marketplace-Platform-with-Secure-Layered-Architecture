@@ -1,12 +1,12 @@
 /* =============================================
    HERO SECTION - BESOIN.MA
-   Couleurs: #FF4D00 (orange) | #0066FF (bleu)
+   Couleurs: #D05A2F (orange) | #5374AC (bleu)
    ============================================= */
 
 /* ── VARIABLES ── */
 :root {
-    --orange:    #FF4D00;
-    --blue:      #0066FF;
+    --orange:   #D05A2F;
+    --blue:      #5374AC;
     --ink:       #102047;
     --muted:     #58627a;
     --card-bg:   rgba(255,255,255,0.97);

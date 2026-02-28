@@ -236,6 +236,14 @@ function besoin_body_classes($classes) {
 
     return $classes;
 }
+
+function besoin_get_search_page_url(): string {
+    $page = get_page_by_path('recherche');
+    if ($page instanceof WP_Post) {
+        return get_permalink($page->ID);
+    }
+    return home_url('/recherche');
+}
 // Connexion à la base métier besoin_data
 function besoin_data_db() {
     static $db = null;
@@ -276,3 +284,22 @@ add_action('wp_enqueue_scripts', function() {
         true // important → charge en bas du body
     );
 });
+function besoin_api_base_url() {
+  return 'http://besoin-api.test';
+}
+
+function besoin_category_icon_url($icon_filename) {
+  $icon_filename = trim((string)$icon_filename);
+  if ($icon_filename === '') return '';
+
+  return rtrim(besoin_api_base_url(), '/') . '/img/icons/' . rawurlencode($icon_filename);
+}
+
+function besoin_business_logo_url($filename) {
+  $filename = trim((string)$filename);
+  if ($filename === '') return '';
+
+  return rtrim(besoin_api_base_url(), '/') 
+        . '/assets/plugins/img/' 
+        . rawurlencode($filename);
+}

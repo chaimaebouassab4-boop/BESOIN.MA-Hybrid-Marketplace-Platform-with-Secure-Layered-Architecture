@@ -35,20 +35,19 @@ $logo_uri  = get_template_directory_uri() . '/images/besoinLogo-removebg-preview
 
             <!-- SEARCH BAR -->
             <div class="besoin-search-wrapper">
-                <form method="get" action="<?php echo esc_url(home_url('/recherche')); ?>" class="besoin-search-bar" id="besoin-search-form">
+                <form method="get" action="<?php echo esc_url(function_exists('besoin_get_search_page_url') ? besoin_get_search_page_url() : home_url('/recherche/')); ?>"  class="besoin-search-bar" id="besoin-search-form">
 
                     <!-- Type dropdown -->
                     <div class="dropdown">
                         <button class="besoin-drop-btn dropdown-toggle" type="button"
                                 id="keywordsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="bi bi-grid"></i>
-                            <span class="drop-label" id="keywords-label">Catégorie</span>
+                            <span class="drop-label" id="keywords-label">Type</span>
                         </button>
                         <ul class="dropdown-menu besoin-dropdown-menu" aria-labelledby="keywordsDropdown">
-                            <li><a class="dropdown-item keywords-item" href="#" data-value="service">Services</a></li>
-                            <li><a class="dropdown-item keywords-item" href="#" data-value="emploi">Emplois</a></li>
-                            <li><a class="dropdown-item keywords-item" href="#" data-value="business">Business</a></li>
-                            <li><a class="dropdown-item keywords-item" href="#" data-value="produit">Produits</a></li>
+                            <li><a class="dropdown-item keywords-item" href="#" data-value="service">Mots-clés </a></li>
+                            <li><a class="dropdown-item keywords-item" href="#" data-value="emploi">Services/Produits</a></li>
+                            <li><a class="dropdown-item keywords-item" href="#" data-value="business">Entreprise</a></li>
                         </ul>
                     </div>
 
@@ -102,7 +101,7 @@ $logo_uri  = get_template_directory_uri() . '/images/besoinLogo-removebg-preview
                                 
 
                 <a href="<?php echo esc_url(home_url('/inscription')); ?>" class="besoin-action-btn btn-add-business">
-                    <i class="bi bi-plus-circle"></i><span>Créer un compte</span>
+                    <i class="bi bi-plus-circle"></i><span>Deals list</span>
                 </a>
             </div>
 
